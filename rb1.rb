@@ -5,11 +5,11 @@ agama = "Islam"
 
 puts "Halo sayang perkenalkan nama saya " + nama
 puts "dan umur saya " + umur
-puts "Agama saya " + agama
-
-print "Apakah kamu ingin berteman dengan ku? (ya/tidak) :"
+puts "Agama saya " + agama 
+puts "\n\n\n"
+print "Apakah kamu ingin berteman dengan ku? : "
 jawaban = gets.chomp
-puts "Terkasih sudah menjawab pertanyaan itu #{jawaban}"
+puts "Terkasih sudah menjawab #{jawaban}"
 
 if jawaban == 'ya'
   puts "Senang sekali mendengarnya!"
