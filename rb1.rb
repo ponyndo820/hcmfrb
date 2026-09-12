@@ -6,7 +6,7 @@ agama = "Islam"
 puts "Halo sayang perkenalkan nama saya " + nama
 puts "dan umur saya " + umur
 puts "Agama saya " + agama 
-puts "\n\n\n"
+puts "\n\n"
 print "Apakah kamu ingin berteman dengan ku? : "
 jawaban = gets.chomp
 puts "Terkasih sudah menjawab #{jawaban}"
