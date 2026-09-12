@@ -17,7 +17,7 @@ elsif jawaban == 'tidak'
   puts "oh kenapa?"
   puts "Apakah Kamu tidak menyukai aku? :"
   alasan = gets.chomp
-  puts "Baiklah, aku mengerti. Kamu sedang sibuk '#{alasan}'"
+  puts "Baiklah, aku mengerti."
 else
   puts "Senang sekali bertemu dengan mu!, Semoga kita bisa bertemu lagi."
 end
