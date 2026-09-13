@@ -9,5 +9,5 @@ def penjumlahan(angka1, angka2)
   hasil
 end
 
-total = tambah(1, 2)
+total = penjumlahan(1, 2)
 puts "Hasil penjualan adalah #{total}"
