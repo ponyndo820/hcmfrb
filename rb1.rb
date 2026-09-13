@@ -6,7 +6,7 @@ agama = "Islam"
 puts "Halo sayang perkenalkan nama saya " + nama
 puts "dan umur saya " + umur
 puts "Agama saya " + agama 
-puts "\n\n"
+puts "\n"
 print "Apakah kamu ingin berteman dengan ku? : "
 jawaban = gets.chomp
 puts "Terkasih sudah menjawab #{jawaban}"
@@ -19,5 +19,5 @@ elsif jawaban == 'tidak'
   alasan = gets.chomp
   puts "Baiklah, aku mengerti."
 else
-  puts "Senang sekali bertemu dengan mu!, Semoga kita bisa bertemu lagi."
+  puts "Saya tidak mengerti dengan apa yang kamu maksud"
 end
