@@ -1,7 +1,7 @@
 require 'open-uri'
 
 # 1. URL Gambar yang ingin diunduh
-url_gambar = "https://www.ruby-lang.org/images/header-ruby-logo.png"
+url_gambar = "https://youtu.be/3RZ6Eir-QyI?si=c4EG74yYtoR_Fuoa"
 nama_file = "logo_ruby.png"
 
 puts "Sedang mengunduh gambar..."
