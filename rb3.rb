@@ -1,22 +1,48 @@
 require 'open-uri'
+require 'cgi'
 
-# 1. URL Gambar yang ingin diunduh
-url_gambar = "https://youtu.be/3RZ6Eir-QyI?si=c4EG74yYtoR_Fuoa"
-nama_file = "logo_ruby.png"
+def ambil_screenshot(url, mode = "desktop")
+  # Pengaturan resolusi layar
+  resolusi = mode == "mobile" ? "&viewport.width=375&viewport.height=812" : "&viewport.width=1280&viewport.height=800"
+  
+  nama_file = "web_screenshot.png"
+  url_encoded = CGI.escape(url)
+  api_url = "https://api.microlink.io/?url=#{url_encoded}&screenshot=true&embed=screenshot.url#{resolusi}"
 
-puts "Sedang mengunduh gambar..."
+  puts "\n[+] Memproses render screenshot dari: #{url}..."
 
-# 2. Proses mengunduh gambar
-URI.open(url_gambar) do |gambar|
-  File.open(nama_file, "wb") do |file|
-    file.write(gambar.read)
+  begin
+    URI.open(api_url, "User-Agent" => "Mozilla/5.0") do |gambar|
+      File.open(nama_file, "wb") do |file|
+        file.write(gambar.read)
+      end
+    end
+
+    puts "[✓] Screenshot berhasil diunduh!"
+    puts "=" * 45
+    
+    # Menampilkan gambar di log Termux
+    system("chafa #{nama_file}")
+
+  rescue => e
+    puts "[X] Gagal mengambil screenshot: #{e.message}"
   end
 end
 
-puts "Gambar berhasil diunduh!"
-puts "=" * 40
-puts "Tampilan gambar di log terminal:"
-puts "=" * 40
+# --- Alur Interaktif ---
+puts "=== GENERATOR SCREENSHOT WEB ==="
+print "Masukkan URL Website (contoh: github.com): "
+input_url = gets.chomp.downcase
 
-# 3. Memanggil perintah terminal 'chafa' melalui Ruby
-system("chafa #{nama_file}")
+# Otomatis menambahkan 'https://' jika belum ada
+unless input_url.start_with?("http://", "https://")
+  input_url = "https://" + input_url
+end
+
+print "Pilih Tampilan (1: Desktop, 2: Mobile) [1]: "
+pilihan = gets.chomp
+
+mode_tampilan = (pilihan == "2") ? "mobile" : "desktop"
+
+# Panggil fungsi
+ambil_screenshot(input_url, mode_tampilan)
