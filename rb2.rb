@@ -1,5 +1,5 @@
 def Halo(nama)
-  purs "ya #{nama}"
+  puts "ya #{nama}"
 end
 
 Halo("nama")
