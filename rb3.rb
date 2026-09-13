@@ -2,7 +2,6 @@ require 'open-uri'
 require 'cgi'
 
 def ambil_screenshot(url, mode = "desktop")
-  # Pengaturan resolusi layar
   resolusi = mode == "mobile" ? "&viewport.width=375&viewport.height=812" : "&viewport.width=1280&viewport.height=800"
   
   nama_file = "web_screenshot.png"
@@ -20,8 +19,6 @@ def ambil_screenshot(url, mode = "desktop")
 
     puts "[✓] Screenshot berhasil diunduh!"
     puts "=" * 45
-    
-    # Menampilkan gambar di log Termux
     system("chafa #{nama_file}")
 
   rescue => e
@@ -29,20 +26,19 @@ def ambil_screenshot(url, mode = "desktop")
   end
 end
 
-# --- Alur Interaktif ---
 puts "=== GENERATOR SCREENSHOT WEB ==="
-print "Masukkan URL Website (contoh: github.com): "
-input_url = gets.chomp.downcase
+print "Masukkan URL Website: "
+# HAPUS .downcase di sini agar karakter huruf besar pada URL/ID YouTube tetap terjaga!
+input_url = gets.chomp.strip 
 
-# Otomatis menambahkan 'https://' jika belum ada
-unless input_url.start_with?("http://", "https://")
+# Pengecekan skema HTTP/HTTPS tanpa mengganggu huruf kapital di bagian ID
+unless input_url.match?(%r{\Ahttps?://}i)
   input_url = "https://" + input_url
 end
 
 print "Pilih Tampilan (1: Desktop, 2: Mobile) [1]: "
-pilihan = gets.chomp
+pilihan = gets.chomp.strip
 
 mode_tampilan = (pilihan == "2") ? "mobile" : "desktop"
 
-# Panggil fungsi
 ambil_screenshot(input_url, mode_tampilan)
