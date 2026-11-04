@@ -1,4 +1,5 @@
 #Tes 3
+# ☕🗿
 require 'open-uri'
 
 def ambil_screenshot(url, mode = "desktop")
