@@ -1,1 +1,1 @@
-Cuma project gabut saja 
+Cuma project gabut saja dan tampat latihan ☕🗿
